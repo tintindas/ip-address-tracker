@@ -12,4 +12,5 @@
 
 .upperhalf {
 	background-image: url('../public/images/pattern-bg.png');
+	background-size: cover;
 }
