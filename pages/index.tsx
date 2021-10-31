@@ -1,10 +1,14 @@
 import Head from 'next/head'
 import Card from '../components/Card'
 import Header from '../components/Header'
-import Map from '../components/Map'
 import Search from '../components/Search'
+import dynamic from 'next/dynamic'
 
 export default function Home() {
+	const MapWithNoSSR = dynamic(() => import('../components/Map'), {
+		ssr: false
+	})
+
 	return (
 		<div>
 			<Head>
@@ -19,7 +23,9 @@ export default function Home() {
 
 			<Card />
 
-			<Map />
+			<div id='map' className='h-[620px] relative'>
+				<MapWithNoSSR />
+			</div>
 		</div>
 	)
 }

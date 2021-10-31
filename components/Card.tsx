@@ -21,7 +21,7 @@ const DUMMY_DATA = [
 
 const Card = () => {
 	return (
-		<main className='absolute left-1/2 -translate-x-1/2  w-72 bg-white -mt-24 flex flex-col space-y-5 items-center justify-center p-4 pt-5 z-50 rounded-lg shadow-lg'>
+		<main className='absolute left-1/2 -translate-x-1/2 w-72 bg-white -mt-24 flex flex-col space-y-5 items-center justify-center p-4 pt-5 z-50 rounded-lg shadow-lg'>
 			{DUMMY_DATA.map((details, idx) => (
 				<CardItem key={idx} field={details.field} val={details.value} />
 			))}
