@@ -1,11 +1,12 @@
 import Image from 'next/image'
 
-const Search = () => {
+const Search = ({ setInput, handleSubmit }) => {
 	return (
-		<form className='mt-8 w-72 rounded-lg flex'>
+		<form className='mt-8 w-72 rounded-lg flex' onSubmit={handleSubmit}>
 			<input
 				type='text'
 				className='rounded-l-lg h-12 flex-grow pl-5 text-[18px] focus:outline-none'
+				onChange={(e) => console.log(e.target.value)}
 			/>
 			<button
 				type='submit'
