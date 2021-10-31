@@ -3,3 +3,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	body {
+		@apply font-rubik;
+	}
+}
+
+.upperhalf {
+	background-image: url('../public/images/pattern-bg.png');
+}
