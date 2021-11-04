@@ -10,6 +10,7 @@ const Search = ({ handleSubmit }) => {
 				name='query'
 				type='text'
 				className='rounded-l-lg h-12 flex-grow pl-5 text-[18px] focus:outline-none'
+				placeholder='8.8.8.8'
 			/>
 			<button
 				type='submit'
