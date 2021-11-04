@@ -20,14 +20,14 @@ export default function Home() {
 	})
 	const [coordinates, setCoordinates] = useState(GOOGLE_COORDINATES)
 
-	// useEffect(() => {
-	// 	const loadInitialData = async () => {
-	// 		const res = await fetch('https://api.ipify.org/')
-	// 		const ip = await res.text()
-	// 		await search(ip)
-	// 	}
-	// 	loadInitialData()
-	// }, [])
+	useEffect(() => {
+		const loadInitialData = async () => {
+			const res = await fetch('https://api.ipify.org/')
+			const ip = await res.text()
+			await search(ip)
+		}
+		loadInitialData()
+	}, [])
 
 	const search = async (query: FormDataEntryValue) => {
 		const res = await fetch(
