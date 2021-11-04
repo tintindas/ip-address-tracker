@@ -7,10 +7,10 @@ const LeafIcon = Leaf.icon({
 	iconSize: [30, 40]
 })
 
-const Map = () => {
+const Map = ({ coordinates }) => {
 	return (
 		<MapContainer
-			center={[28.6448, 77.216721]}
+			center={coordinates}
 			zoom={10}
 			scrollWheelZoom={false}
 			style={{ height: '100%', width: '100%' }}
@@ -20,7 +20,7 @@ const Map = () => {
 				url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
 				attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
 			/>
-			<Marker icon={LeafIcon} position={[28.6448, 77.216721]}>
+			<Marker icon={LeafIcon} position={coordinates}>
 				<Popup>Hey ! you found me</Popup>
 			</Marker>
 		</MapContainer>

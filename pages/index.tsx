@@ -11,7 +11,7 @@ export default function Home() {
 	})
 
 	const [result, setResult] = useState({})
-	const [input, setInput] = useState('')
+	const [coordinates, setCoordinates] = useState([28.6448, 77.216721])
 
 	useEffect(() => {
 		const fetchIp = async () => {
@@ -21,7 +21,7 @@ export default function Home() {
 		fetchIp()
 	}, [])
 
-	const search = async (ip: string) => {
+	const search = async (ip: FormDataEntryValue) => {
 		const res = await fetch(
 			`https://geo.ipify.org/api/v2/country,city?apiKey=${process.env.NEXT_PUBLIC_IPIFY_APIKEY}&ipAddress=${ip}`
 		)
@@ -29,9 +29,20 @@ export default function Home() {
 		return data
 	}
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault()
-		console.log(input)
+		const data = new FormData(e.target)
+		const { query } = Object.fromEntries(data.entries())
+		const info = await search(query)
+		const { location, isp, ip } = info
+		const result = {
+			'ip address': ip,
+			location: `${location.city}, ${location.country}`,
+			timezone: `UTC ${location.timezone}`,
+			isp
+		}
+		setCoordinates([location.lat, location.lng])
+		setResult(result)
 	}
 	return (
 		<div>
@@ -42,13 +53,13 @@ export default function Home() {
 
 			<div className='upperhalf h-64 flex flex-col items-center z-10'>
 				<Header />
-				<Search setInput={setInput} handleSubmit={handleSubmit} />
+				<Search handleSubmit={handleSubmit} />
 			</div>
 
-			<Card />
+			<Card result={result} />
 
 			<div id='map' className='h-[620px] relative'>
-				<MapWithNoSSR />
+				<MapWithNoSSR coordinates={coordinates} />
 			</div>
 		</div>
 	)
