@@ -2,7 +2,10 @@ import Image from 'next/image'
 
 const Search = ({ handleSubmit }) => {
 	return (
-		<form className='mt-8 w-72 rounded-lg flex' onSubmit={handleSubmit}>
+		<form
+			className='mt-8 w-72 md:w-1/3 rounded-lg flex'
+			onSubmit={handleSubmit}
+		>
 			<input
 				name='query'
 				type='text'
