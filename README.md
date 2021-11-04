@@ -28,4 +28,4 @@ This is my solution to the [Frontend Mentor - IP Address Tracker](https://www.fr
 
 ## Live Link
 
-[Live Project Link](https://link)
+[Live Project Link](ip-address-tracker-puce.vercel.app)
